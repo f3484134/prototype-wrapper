@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prototype Wrapper v1.1 — Product Pitch</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/night.css">
+  <style>
+    .reveal h1, .reveal h2, .reveal h3 { color: #e94560; }
+    .reveal section { text-align: left; }
+    .reveal ul { font-size: 0.85em; }
+    .reveal .center { text-align: center; }
+    .arch-box { background: #16213e; border: 1px solid #0f3460; border-radius: 8px; padding: 16px; margin: 8px 0; font-family: monospace; font-size: 0.65em; white-space: pre; line-height: 1.4; }
+    .highlight { color: #e94560; font-weight: bold; }
+    .reveal table { font-size: 0.7em; }
+    .reveal table th { background: #16213e; }
+    .flow-box { background: #1a1a2e; border: 1px solid #0f3460; border-radius: 8px; padding: 14px; margin: 8px 0; font-size: 0.75em; }
+    .flow-box h4 { color: #e94560; margin: 0 0 8px 0; font-size: 1em; }
+    .tag { display: inline-block; background: #e94560; color: #fff; border-radius: 4px; padding: 2px 8px; font-size: 0.7em; margin-left: 6px; vertical-align: middle; }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- Slide 1: Title -->
+<section class="center">
+  <h1>Prototype Wrapper <span style="font-size:0.5em;">v1.1</span></h1>
+  <p>設計原型互動導覽工具</p>
+  <p style="font-size:0.7em; color:#aaa;">一行 script，讓原型自己說故事</p>
+  <p style="font-size:0.6em;color:#888;">Agent Product Team · 2026</p>
+</section>
+
+<!-- Slide 2: Problem -->
+<section>
+  <h2>1. 問題定義</h2>
+  <h3>設計師的痛點</h3>
+  <ul>
+    <li>做完原型後，<span class="highlight">沒有好方法錄製互動流程</span>給利益相關人</li>
+    <li>螢幕錄影 (Loom) 只是影片，無法讓人<span class="highlight">自由探索</span></li>
+    <li>留言只能在影片時間軸上，無法錨定到<span class="highlight">具體互動步驟</span></li>
+    <li>每次 demo 都要設計師<span class="highlight">重複操作、口頭解說</span></li>
+  </ul>
+</section>
+
+<!-- Slide 3: Solution -->
+<section>
+  <h2>2. 解決方案</h2>
+  <h3>一行 &lt;script&gt; 搞定一切</h3>
+  <ul>
+    <li>在任何原型頁面加入<span class="highlight">一行 script 標籤</span>，即刻啟用導覽功能</li>
+    <li>Shadow DOM 隔離 — <span class="highlight">不影響原型樣式</span></li>
+    <li><span class="highlight">Designer 模式：</span>正常操作即錄製，自動生成步驟描述</li>
+    <li><span class="highlight">Reviewer 模式：</span>旁白驅動播放 — TTS 先說，動作後執行</li>
+    <li>所有步驟皆可加旁白（narration）</li>
+    <li>純前端、零依賴、零後端、單一檔案 (~20KB)</li>
+  </ul>
+  <div style="font-size:0.75em; background:#16213e; border-radius:6px; padding:12px; margin-top:12px;">
+    <code>&lt;script src="prototype-wrapper.js"&gt;&lt;/script&gt;</code>
+    <span style="color:#888;"> ← 就這樣，沒了</span>
+  </div>
+</section>
+
+<!-- Slide 4: Features -->
+<section>
+  <h2>3. 功能展示</h2>
+  <ul>
+    <li>✅ 注入任意原型頁面（無需 iframe、無需包裝）</li>
+    <li>✅ 完整錄製：click / input / scroll / navigation</li>
+    <li>✅ 自動步驟描述（🖱 Click: "Top Stories" on HN）</li>
+    <li>✅ 每個步驟可加旁白文字</li>
+    <li>✅ Narration-driven 播放（先說再做）</li>
+    <li>✅ 模式切換 — Panel 內一鍵切換 Designer / Reviewer</li>
+    <li>✅ 情境管理：新增、選擇、匯出 JSON、匯入</li>
+    <li>✅ TTS 語音旁白（Web Speech API）</li>
+    <li>✅ localStorage 持久化 + JSON 匯出入</li>
+  </ul>
+</section>
+
+<!-- Slide 5: Competitive -->
+<section>
+  <h2>4. 競品差異化</h2>
+  <table>
+    <tr><th></th><th>Loom</th><th>Maze</th><th>Arcade</th><th class="highlight">Wrapper v1.1</th></tr>
+    <tr><td>互動性</td><td>❌ 影片</td><td>⚠️ 限 Figma</td><td>⚠️ 截圖</td><td>✅ 即時</td></tr>
+    <tr><td>自由探索</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+    <tr><td>步驟旁白</td><td>❌</td><td>⚠️</td><td>❌</td><td>✅ TTS</td></tr>
+    <tr><td>任意原型</td><td>✅</td><td>❌</td><td>⚠️</td><td>✅</td></tr>
+    <tr><td>免後端</td><td>❌</td><td>❌</td><td>❌</td><td>✅</td></tr>
+    <tr><td>整合成本</td><td>需錄影</td><td>需匯出</td><td>需截圖</td><td class="highlight">1 行 script</td></tr>
+    <tr><td>檔案大小</td><td>—</td><td>—</td><td>—</td><td>~20KB</td></tr>
+  </table>
+</section>
+
+<!-- Slide 6: Architecture -->
+<section>
+  <h2>5. 技術架構</h2>
+  <div class="arch-box">
+┌─────────────── Prototype Page ───────────────┐
+│                                               │
+│   原型 HTML/CSS/JS（完全不受影響）              │
+│                                               │
+│   ┌─── prototype-wrapper.js (inject) ───┐     │
+│   │                                     │     │
+│   │  Shadow DOM Host                    │     │
+│   │  ├── FAB (浮動按鈕)                 │     │
+│   │  ├── Panel (錄製/播放控制)           │     │
+│   │  └── Overlay (旁白顯示)             │     │
+│   │                                     │     │
+│   │  Modules:                           │     │
+│   │  ├── Recorder (click/input/scroll)  │     │
+│   │  ├── Player (narration-driven)      │     │
+│   │  ├── TTS (Web Speech API)           │     │
+│   │  └── Storage (localStorage + JSON)  │     │
+│   └─────────────────────────────────────┘     │
+│                                               │
+│   零依賴 · 純 Vanilla JS · 單一檔案            │
+└───────────────────────────────────────────────┘</div>
+</section>
+
+<!-- Slide 7: UX Flow -->
+<section>
+  <h2>6. UX 流程</h2>
+  <div style="display: flex; gap: 16px;">
+    <div class="flow-box" style="flex:1;">
+      <h4>🔴 Designer 流程</h4>
+      <ol style="font-size:0.95em; padding-left:18px;">
+        <li>打開原型頁面</li>
+        <li>點擊 FAB → Panel 展開</li>
+        <li>點「開始錄製」</li>
+        <li>正常操作頁面 → 動作自動捕捉</li>
+        <li>點「停止」→ 命名情境</li>
+        <li>為每個步驟加旁白文字</li>
+        <li>切換至 Reviewer 模式預覽</li>
+      </ol>
+    </div>
+    <div class="flow-box" style="flex:1;">
+      <h4>▶️ Reviewer 流程</h4>
+      <ol style="font-size:0.95em; padding-left:18px;">
+        <li>打開原型頁面</li>
+        <li>點擊 FAB → 看到情境列表</li>
+        <li>選擇情境 → 播放開始</li>
+        <li>旁白先朗讀（TTS）</li>
+        <li>朗讀完成 → 高亮元素 → 執行動作</li>
+        <li>底部控制條：暫停 / 繼續 / 停止</li>
+        <li>隨時可暫停並自由探索</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- Slide 8: v1.0 vs v1.1 -->
+<section>
+  <h2>7. v1.0 → v1.1 演進</h2>
+  <table>
+    <tr><th></th><th>v1.0</th><th class="highlight">v1.1</th></tr>
+    <tr><td>架構</td><td>iframe + Vue 3 包裝殼</td><td>單一 script 注入</td></tr>
+    <tr><td>依賴</td><td>Vue 3 + 多個 composable</td><td>零依賴、純 Vanilla JS</td></tr>
+    <tr><td>樣式隔離</td><td>iframe 天然隔離</td><td>Shadow DOM</td></tr>
+    <tr><td>整合方式</td><td>開啟 Wrapper 貼上原型 URL</td><td>原型頁加一行 script</td></tr>
+    <tr><td>模式切換</td><td>URL 參數切換</td><td>Panel 內即時 toggle</td></tr>
+    <tr><td>旁白</td><td>部分步驟</td><td>所有步驟皆可加旁白</td></tr>
+    <tr><td>播放節奏</td><td>固定時間間隔</td><td>Narration-driven</td></tr>
+    <tr><td>檔案大小</td><td>整個 Vue App</td><td>~20KB 單檔</td></tr>
+  </table>
+</section>
+
+<!-- Slide 9: Roadmap -->
+<section>
+  <h2>8. 下一階段</h2>
+  <ul>
+    <li><strong>短期：</strong>使用者測試 (5-10 位設計師) → 收集回饋</li>
+    <li><strong>中期：</strong>語音錄製取代 TTS、多語言旁白支援</li>
+    <li><strong>長期：</strong>雲端同步、多人協作留言、Analytics</li>
+  </ul>
+  <h3>商業模式</h3>
+  <ul>
+    <li><span class="highlight">目標客群：</span>設計團隊 (3-20 人)</li>
+    <li><span class="highlight">定價模型：</span>Free tier (3 scenarios) + Pro ($12/user/mo)</li>
+    <li><span class="highlight">GTM：</span>開源 → ProductHunt → 設計社群口碑</li>
+  </ul>
+</section>
+
+<!-- Slide 10: End -->
+<section class="center">
+  <h1>謝謝</h1>
+  <p>Prototype Wrapper v1.1</p>
+  <p style="font-size:0.8em;">一行 script，讓每個原型都能自己說故事</p>
+  <div style="margin-top:24px; font-size:0.65em; color:#888;">
+    <code>&lt;script src="prototype-wrapper.js"&gt;&lt;/script&gt;</code>
+  </div>
+</section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, transition: 'slide' })</script>
+</body>
+</html>

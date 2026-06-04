@@ -70,3 +70,18 @@ Designer 面板中提供 JSON 匯出與匯入功能，方便分享情境給團�
   }]
 }]
 ```
+
+## Demo
+
+在 HN Redesign 上體驗 Prototype Wrapper 的錄製/播放功能：
+
+- **Designer 模式（錄製）：** https://f3484134.github.io/hn-redesign/?mode=designer
+- **Reviewer 模式（播放）：** https://f3484134.github.io/hn-redesign/
+
+> HN Redesign 頁面已內建 Walkthrough Widget，可直接使用。
+
+## 相關連結
+
+- [Pitch Deck](https://f3484134.github.io/prototype-wrapper/pitch/)
+- [HN Redesign Prototype](https://f3484134.github.io/hn-redesign/)
+- [Deck Factory (所有簡報)](https://f3484134.github.io/decks/)
